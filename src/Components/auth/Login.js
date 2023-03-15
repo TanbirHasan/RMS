@@ -1,9 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+  const onSubmit = data => console.log(data);
   return (
-    <div class="flex justify-center mt-32">
+    <div class="flex justify-center mt-32 ">
       <div class="flex flex-col justify-center items-center md:flex-row shadow-xl rounded-xl max-w-7xl w-[90%]  m-2">
         <div class=" w-full md:w-3/4">
           <div class="text-xl flex flex-col justify-center items-center mt-5 md:mt-0 py-4">
@@ -28,22 +33,31 @@ const Login = () => {
             <h1 class="text-sm font-medium text-gray-600 m-2">OR</h1>
 
           </div>
+          <form onSubmit={handleSubmit(onSubmit)}>
           <div class="flex flex-col justify-center items-center m-2 space-y-6 md:space-y-8">
-            <div class="">
-              <input type="text" placeholder="User Name"
-                class=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]" />
+            <div className="flex flex-col">
+              <input type="email" placeholder="Email" {...register("email", { required: true})} 
+                className=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]" />
+              
+
+              {errors.email && <span className='mt-2 text-red'>Email is required</span>}
             </div>
-            <div class="">
-              <input type="password" placeholder="Password"
+            <div className="flex flex-col">
+              <input type="password" placeholder="Password" {...register("password",{required : true})} 
                 class=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]" />
+                
+
+                 {errors.password ? <span className='mt-2 text-red'>Passoword is required</span> : ""}
             </div>
 
           </div>
           <div class="text-center mt-7">
             <button
+            type="submit"
               class=" px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md text-white bg-gradient-to-l from-blue-400 to-emerald-400  font-medium m-2 mb-6 ">Sign
               In</button>
           </div>
+          </form>
 
         </div>
         <div
