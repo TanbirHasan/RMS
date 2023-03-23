@@ -12,7 +12,7 @@ const Dashboard = () => {
   const { collapseSidebar } = useProSidebar();
   return (
     <div style={{ display: "flex", height: "100%" }}>
-      <Sidebar className="bg-gray-200 h-screen">
+      <Sidebar className="bg-gray-200 h-auto">
         <div className="my-10">
           <h3 className="ml-5 text-2xl">Admin Panel</h3>
         </div>
@@ -33,6 +33,7 @@ const Dashboard = () => {
           </MenuItem>
         </Menu>
       </Sidebar>
+
       <Outlet />
     </div>
   );

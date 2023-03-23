@@ -1,8 +1,9 @@
 import React from 'react'
+import DashboardNavbar from '../DashboardNavbar'
 
 const RoleCreation = () => {
   return (
-    <div>RoleCreation</div>
+    <DashboardNavbar>RoleCreation</DashboardNavbar>
   )
 }
 

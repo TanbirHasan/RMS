@@ -1,8 +1,9 @@
 import React from 'react'
+import DashboardNavbar from '../DashboardNavbar'
 
 const Inventory = () => {
   return (
-    <div>Inventory</div>
+    <DashboardNavbar>Inventory</DashboardNavbar>
   )
 }
 
